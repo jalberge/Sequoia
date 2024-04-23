@@ -94,7 +94,7 @@ min_clonal_mut=opt$min_clonal_mut
 # Load packages (install if they are not installed yet)
 #----------------------------------
 options(stringsAsFactors = F)
-cran_packages=c("ggplot2","ape","seqinr","stringr","data.table","tidyr","dplyr","VGAM","MASS","devtools")
+cran_packages=c("ggplot2","ape","seqinr","stringr","data.table","tidyr","dplyr","VGAM","MASS","devtools", "parallel")
 bioconductor_packages=c("Rsamtools","GenomicRanges")
 
 for(package in cran_packages){
