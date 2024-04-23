@@ -1,3 +1,10 @@
+#----------------------------------
+# Set default repo to install packages
+#---------------------------------
+
+r = getOption("repos")
+r["CRAN"] = "http://cran.us.r-project.org"
+options(repos = r)
 
 if(!require("optparse", character.only=T,quietly = T, warn.conflicts = F)){
   install.packages("optparse",repos = "http://cran.us.r-project.org")
