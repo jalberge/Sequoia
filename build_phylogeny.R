@@ -65,7 +65,7 @@ VAF_treshold=opt$VAF_treshold_mixmodel
 indel_rho=opt$indel_rho
 min_cov=opt$min_cov
 max_cov=opt$max_cov
-output_dir=opt$output_dir
+output_dir=ifelse((opt$output_dir!="" & !endsWith(opt$output_dir, "/")),paste0(opt$output_dir, "/"),opt$output_dir)
 only_snvs=opt$only_snvs
 germline_cutoff=opt$germline_cutoff
 if(is.null(opt$exclude_samples)) {samples_exclude=NULL} else {samples_exclude=unlist(strsplit(x=opt$exclude_samples,split = ","))}
@@ -73,7 +73,6 @@ if(is.null(opt$cnv_samples)) {samples_with_CNVs=NULL} else {samples_with_CNVs=un
 if(is.null(opt$cgpvaf_output)) {cgpvaf_paths=NULL} else {cgpvaf_paths=unlist(strsplit(x=opt$cgpvaf_output,split = ","))}
 keep_ancestral=opt$keep_ancestral
 patient_ID=opt$donor_id
-output_dir=opt$output_dir
 nv_path=opt$input_nv
 nr_path=opt$input_nr
 max_muts_plot=opt$max_muts_plot
