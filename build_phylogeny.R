@@ -682,13 +682,14 @@ if(mixmodel){
 if(plot_spectra){
   print("Plotting mutational spectra...")
   filter_snvs_df=filter_df[nchar(filter_df$Ref)==1&nchar(filter_df$Alt)==1,]
-  if(sum(!filter_snvs_df$Germline)<max_muts_plot){
-    plot_spectrum(filter_snvs_df[filter_snvs_df$Germline==0,1:4], save=paste0(output_dir,patient_ID,"_",mut_id,"_germline_spectrum.pdf"),genomeFile = genomeFile)
-  }else{
-    subset=sample(which(filter_snvs_df$Germline==0),max_muts_plot,replace = F)
-    plot_spectrum(filter_snvs_df[subset,1:4], save=paste0(output_dir,patient_ID,"_",mut_id,"_germline_spectrum.pdf"),genomeFile = genomeFile)
+  if(germline_cutoff<0){
+    if(sum(!filter_snvs_df$Germline)<max_muts_plot){
+      plot_spectrum(filter_snvs_df[filter_snvs_df$Germline==0,1:4], save=paste0(output_dir,patient_ID,"_",mut_id,"_germline_spectrum.pdf"),genomeFile = genomeFile)
+    }else{
+      subset=sample(which(filter_snvs_df$Germline==0),max_muts_plot,replace = F)
+      plot_spectrum(filter_snvs_df[subset,1:4], save=paste0(output_dir,patient_ID,"_",mut_id,"_germline_spectrum.pdf"),genomeFile = genomeFile)
+    }
   }
-  
   if(sum(!filter_snvs_df$Depth_filter)<max_muts_plot){
     plot_spectrum(filter_snvs_df[filter_snvs_df$Depth_filter==0,1:4], save=paste0(output_dir,patient_ID,"_",mut_id,"_highlow_depth_spectrum.pdf"),genomeFile = genomeFile)
   }else{
